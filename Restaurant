@@ -1,0 +1,152 @@
+import java.util.*;
+class Mvs
+{
+public static void main(String args[])
+{
+	Scanner sin =new Scanner(System.in);
+	System.out.println("who are you?:customer or manager");
+	String s=sin.nextLine();
+	if(s.equals("customer"))
+	{
+		C.menu();
+		C.place_order();
+		
+	}
+	else
+		C.Manager();
+	
+}
+}
+class C
+{
+    static Scanner sin =new Scanner(System.in);
+	static ArrayList<String> menu=new ArrayList<>(Arrays.asList("chicken_biryani","mutton_biryani","veg_biryani","butternon_2pc","panner_curry","chicken_curry","kaju_curry","curd_rice","lemon_rice"));
+	static ArrayList<Integer> prices=new ArrayList<>(Arrays.asList(230,350,200,40,100,150,120,70,80));
+	 public static void menu() {
+        int k=1; 
+		System.out.println("MENU");
+		for(int i=0;i<menu.size();i++)
+		{ 
+	     System.out.println(k+"."+menu.get(i)+" : "+prices.get(i));
+		 k++;	
+        }
+	 }
+	
+	public static void place_order()
+	{
+		int bill=0;
+		System.out.println("enter item number what you want to add to Cart and enter -1 for stop the selecting items :");
+		for(int i=0;i<menu.size();i++){
+			int order=sin.nextInt();
+			for(int j=0;j<menu.size();j++)
+			{
+			if(order==j)
+			  bill=bill+prices.get(j-1);
+			
+			}
+			
+			if(order==-1)
+				break;
+		}
+			
+		System.out.println("success fully order taken.");
+		System.out.println("if you want to reserve table enter 1 otherwise 0.");
+		int r=sin.nextInt();
+        if(r==1)
+		{
+			System.out.println("enter no of peoples for sitting:");
+			int p =sin.nextInt();
+			bill=bill+(p*20);
+			System.out.println("table resrverd.");
+		}
+		System.out.println("Total bill="+bill);
+		int m=0;
+		while(m<=2)
+		{
+		System.out.println("enter payment status:1=paid or 0=not paid");
+		int payment=sin.nextInt();
+		if(payment==1)
+		{
+			System.out.println("payment done.\nEnter no.of stars for Rating out of 5:");
+			int f =sin.nextInt();
+			System.out.println("Thank you visit Again...");
+			break;
+		}
+		else
+			
+			if(m==2)
+               System.out.println("your orde is cancel...");
+		    else
+				System.out.println("payment not done.\n please complete payment and go further step.");
+		    m++;
+		}
+}
+
+public static void Manager(){
+	//String[] manager={"krishna","143"};
+	System.out.println("User name:");
+	String un=sin.next();
+	System.out.println("Password:");
+	String ps=sin.next();
+	if(un.equals("krishna") && ps.equals("143"))
+	{
+	String[] a={"1.Update Menu","2.Track staff performance","3.Add employee","4.Remove employee","5.Update salary of employees"};
+	System.out.println("manager operations:");
+	for(int i=0;i<a.length;i++)
+	{
+		System.out.println(a[i]);
+	}
+	System.out.println("enter operation number you want:");
+	Scanner sin=new Scanner(System.in);
+	int b=sin.nextInt();
+	int l=1;
+	switch(b)
+	{
+	 case 1:
+	 System.out.println("MENU");
+		for(int i=0;i<menu.size();i++)
+		{ 
+	     System.out.println(l+"."+menu.get(i)+" : "+prices.get(i));
+		 l++;	
+        }
+	 }
+	 System.out.println("enter 1 for adding item:\nenter 0 for remove item:");
+	 int c=sin.nextInt();
+	 if(c==1)
+	 {
+		 System.out.println("enter item name:");
+	     String ad=sin.next();
+	     menu.add(ad);
+		 System.out.println("enter item price:");
+	     int h=sin.nextInt();
+	     prices.add(h);
+		 System.out.println("After adding items MENU is:");
+	     l=1;
+		for(int i=0;i<menu.size();i++)
+		{ 
+	     System.out.println(l+"."+menu.get(i)+" : "+prices.get(i));
+		 l++;	
+        }
+		
+	}
+	else{
+		System.out.println("enter item name:");
+	    String re=sin.next();
+	    menu.remove(re);
+		System.out.println("enter item number:");
+	    int r=sin.nextInt();
+	    prices.remove(r-1);
+		System.out.println(" After removing MENU");
+	    l=1;
+		for(int i=0;i<menu.size();i++)
+		{ 
+	     System.out.println(l+"."+menu.get(i)+" : "+prices.get(i));
+		 l++;	
+        }
+		
+	}
+	}
+	else
+		System.out.println("User name or Password are incorrect!");
+	}
+    }
