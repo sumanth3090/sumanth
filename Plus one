@@ -1,0 +1,20 @@
+class Solution {
+        public int[] plusOne(int[] digits) {
+            
+                for (int position = digits.length - 1; position >= 0; position--) {
+                        if (digits[position] < 9) {
+                                    digits[position]++;
+                                                // for all digits less than 9 we increment and return the array
+                                                            return digits;
+                                                                    }
+                                                                            // now if we reach here it means digit was 9 , now we set pos to 0 as 9+1 =10 and we set its 0 to pos
+                                                                                    digits[position] = 0; // Set to 0 and carry over to next digit
+                                                                                        }
+                                                                                            // now if we reach here outside for loop without returning then it means All digits were 9, so we need an extra digit at the front
+                                                                                                int[] incrementedArray = new int[digits.length + 1];
+                                                                                                    incrementedArray[0] = 1;
+                                                                                                        return incrementedArray;
+                                                                                                                
+                                                                                                                    }
+                                                                                                                    }
+                                                                                  
